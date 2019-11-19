@@ -21,7 +21,7 @@ namespace Demo.Controllers
             dbContext = context;
         }
         [HttpGet("")]
-         public IActionResult RegisterPage()
+        public IActionResult RegisterPage()
         {
             return View();
         }
@@ -34,10 +34,10 @@ namespace Demo.Controllers
         public IActionResult Register(User newuser)
         {
             Console.WriteLine("$$$$$$$$$$$$$$$$$WORKING$$$$$$$$$$$$$$$$$$$$");
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 User newUser = newuser;
-                if(dbContext.Users.Any(u => u.Email == newUser.Email))
+                if (dbContext.Users.Any(u => u.Email == newUser.Email))
                 {
                     ModelState.AddModelError("Email", "Email already in use!");
                     return View("RegisterPage");
@@ -86,15 +86,21 @@ namespace Demo.Controllers
                 dbContext.SaveChanges();
             }
             HttpContext.Session.Clear();
-            
-            
+
+
             return RedirectToAction("RegisterPage");
         }
 
         [HttpGet("home")]
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("user_id") != null)
+            {
+                User user = dbContext.Users.Where(a => a.UserId == (int)HttpContext.Session.GetInt32("user_id")).FirstOrDefault();
+                return View(user);
+            }
+            return View("RegisterPage");
+
         }
 
         public IActionResult Privacy()

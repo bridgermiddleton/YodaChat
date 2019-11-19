@@ -1,15 +1,21 @@
-﻿@{
+﻿@model User;
+@{
 ViewData["Title"] = "Home Page";
 }
-
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="~/images/yoda.jpg" width="70" height="70" class="d-inline-block" alt="">
+        YodaChat
+    </a>
+</nav>
 <div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
         <div class="col-6">&nbsp;</div>
-        <div class="col-6">
-            User..........<input type="text" id="userInput" />
+        <div class="col-6 form-group">
+            <input type="hidden" id="userInput" value="@Model.FirstName" />
             <br />
-            Message...<input type="text" id="messageInput" />
+            @Model.FirstName:<input type="text" id="messageInput" />
             <input type="button" id="sendButton" value="Send Message" />
         </div>
     </div>
