@@ -47,7 +47,7 @@ namespace Demo.Controllers
                 dbContext.Add(newUser);
                 dbContext.SaveChanges();
                 HttpContext.Session.SetInt32("user_id", newUser.UserId);
-                return RedirectToAction("Index");
+                return RedirectToAction("TranslatorPage");
             }
             return View("RegisterPage");
 
@@ -72,27 +72,21 @@ namespace Demo.Controllers
                     return View("LoginPage");
                 }
                 HttpContext.Session.SetInt32("user_id", userInDb.UserId);
-                return RedirectToAction("Index");
+                return RedirectToAction("TranslatorPage");
             }
             return View("LoginPage");
         }
         [HttpPost]
         public IActionResult Logout()
         {
-            User user = dbContext.Users.Where(a => a.UserId == (int)HttpContext.Session.GetInt32("user_id")).Include(m => m.CreatedMessages).FirstOrDefault();
-            foreach (Message message in user.CreatedMessages.ToList())
-            {
-                dbContext.Remove(message);
-                dbContext.SaveChanges();
-            }
             HttpContext.Session.Clear();
 
 
             return RedirectToAction("RegisterPage");
         }
 
-        [HttpGet("home")]
-        public IActionResult Index()
+        [HttpGet("chatroom")]
+        public IActionResult ChatRoomPage()
         {
             if (HttpContext.Session.GetInt32("user_id") != null)
             {

@@ -1,5 +1,6 @@
 @model User;
-<form class="form-signin" style="padding: 15px; margin: 0 auto; width: 100%; max-width: 420px;" asp-action="Register" asp-controller="Home" method="POST">
+<form class="form-signin" style="padding: 15px; margin: 0 auto; width: 100%; max-width: 420px;" asp-action="Register"
+    asp-controller="Home" method="POST">
     <div class="text-center mb-4">
         <img class="mb-4" src="~/images/yoda.jpg" alt="image" width="300" height="200">
         <h1>YodaChat</h1>
@@ -10,7 +11,7 @@
         <input style="margin-top: 10px;" class="form-control" asp-for="FirstName" placeholder="First Name">
     </div>
     <div class="form-label-group">
-            <span asp-validation-for="LastName"></span>
+        <span asp-validation-for="LastName"></span>
         <input style="margin-top: 10px;" class="form-control" asp-for="LastName" placeholder="Last Name">
     </div>
     <div class="form-label-group">
@@ -18,16 +19,16 @@
         <input style="margin-top: 10px;" class="form-control" asp-for="Email" placeholder="Email address">
     </div>
     <div class="form-label-group">
-            <span asp-validation-for="Password"></span>
+        <span asp-validation-for="Password"></span>
         <input style="margin-top: 10px;" class="form-control" asp-for="Password" placeholder="Password">
     </div>
     <div class="form-label-group">
-            <span asp-validation-for="Confirm"></span>
+        <span asp-validation-for="Confirm"></span>
         <input style="margin-top: 10px;" class="form-control" asp-for="Confirm" placeholder="Password Confirmation">
     </div>
     <button style="margin-top: 10px;" class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
     <div style="margin-top: 20px;" class="text-center">
         <a href="/login">Already registered?</a>
     </div>
-    
+
 </form>

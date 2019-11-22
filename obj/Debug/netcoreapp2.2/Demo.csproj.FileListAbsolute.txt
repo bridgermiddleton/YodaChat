@@ -14,7 +14,6 @@
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Demo.TagHelpers.input.cache
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Demo.TagHelpers.output.cache
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Demo.RazorCoreGenerate.cache
-/Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/Index.g.cshtml.cs
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/Privacy.g.cshtml.cs
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
@@ -31,3 +30,4 @@
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/LoginPage.g.cshtml.cs
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/RegisterPage.g.cshtml.cs
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/TranslatorPage.g.cshtml.cs
+/Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/ChatRoomPage.g.cshtml.cs

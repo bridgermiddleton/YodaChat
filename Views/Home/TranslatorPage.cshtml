@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="/home">
+    <a class="navbar-brand" href="/translator">
         <img src="~/images/yoda.jpg" width="140" height="90" class="d-inline-block" alt="">
         YodaChat
     </a>
@@ -9,8 +9,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/home">Chat Room<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/translator">Translator</a>
+            <a class="nav-item nav-link active" href="/translator">Translator<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/chatroom">Chat Room</a>
             <form asp-action="Logout" asp-controller="Home" method="POST">
                 <button class="btn btn-dark" type="submit">Logout</button>
             </form>
@@ -21,8 +21,8 @@
 <div class="card bg-dark text-white">
     <img src="~/images/yoda3.jpg" class="card-img" alt="img">
     <div class="card-img-overlay">
-        <h3 class="card-title">Yoda Translator</h3>
-        <p class="card-text">Know how to speak Yoda, you want? What you want to know, you type</p>
+        <h2 class="card-title">Yoda Translator</h2>
+        <p class="card-text">Know how to speak Yoda, you want? Translate, I will!</p>
 
         <div class="row">
             <div class="col-3">

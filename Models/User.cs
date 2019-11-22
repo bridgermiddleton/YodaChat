@@ -7,27 +7,28 @@ namespace Demo.Models
     public class User
     {
         [Key]
-        public int UserId {get;set;}
+        public int UserId { get; set; }
         [Required]
         [MinLength(2)]
-        public string FirstName{get;set;}
+        public string FirstName { get; set; }
         [Required]
         [MinLength(2)]
-        public string LastName{get;set;}
+        public string LastName { get; set; }
         [Required]
         [EmailAddress]
-        public string Email{get;set;}
+        public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
         [MinLength(8)]
-        
-        public string Password{get;set;}
-        public List<Message> CreatedMessages{get;set;}
+
+        public string Password { get; set; }
+        public List<Message> CreatedMessages { get; set; }
 
         [NotMapped]
         [Compare("Password")]
         [DataType(DataType.Password)]
-        public string Confirm {get;set;}
+        [Required]
+        public string Confirm { get; set; }
 
     }
 }
