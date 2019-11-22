@@ -2,7 +2,7 @@
 @{
 ViewData["Title"] = "Home Page";
 }
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/translator">
         <img src="~/images/yoda.jpg" width="140" height="90" class="d-inline-block" alt="">
         YodaChat
@@ -14,7 +14,7 @@ ViewData["Title"] = "Home Page";
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/translator">Translator<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/chatroom">Chat Room</a>
+            <a class="nav-item nav-link active" href="/chatroom">Chat Room</a>
             <form asp-action="Logout" asp-controller="Home" method="POST">
                 <button class="btn btn-dark" type="submit">Logout</button>
             </form>
