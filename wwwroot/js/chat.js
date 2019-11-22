@@ -2,7 +2,6 @@
 
 const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 connection.on("Welcome", (data) => {
-    console.log(data);
     const list = document.getElementById("messagesList");
     data.forEach(thing => {
         const li = document.createElement("li");
@@ -15,7 +14,6 @@ connection.on("Welcome", (data) => {
 document.getElementById("sendButton").disabled = true;
 
 connection.on("ReceiveMessage", function (user, message, userid) {
-    console.log(message);
     const encodedMessage = encodeURIComponent(message);
     fetch(`https://yodish.p.rapidapi.com/yoda.json?text=${encodedMessage}`, {
         "method": "POST",
@@ -26,7 +24,6 @@ connection.on("ReceiveMessage", function (user, message, userid) {
         },
         "body": {}
     }).then(response => response.json()).then(data => {
-        console.log(data.contents.translated);
         const li = document.createElement("li");
         const encodedMsg = user + ":  " + data.contents.translated;
         li.textContent = encodedMsg;

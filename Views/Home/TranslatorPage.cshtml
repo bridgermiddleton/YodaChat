@@ -24,20 +24,23 @@
     <div class="card-img-overlay">
         <h2 class="card-title">Yoda Translator</h2>
         <p class="card-text">Know how to speak Yoda, you want? Translate, I will!</p>
-
-        <div class="row">
-            <div class="col-3">
-                <input id="text" class="form-control" placeholder="Type here!">
+        <form id="translationboomer">
+            <div class="row">
+                <div class="col-3">
+                    <input id="text" class="form-control" placeholder="Type here!">
+                </div>
+                <div class="col-2">
+                    <button id="button" type="submit" class="btn btn-dark">Translate</button>
+                </div>
             </div>
-            <div class="col-2">
-                <button id="button" class="btn btn-dark">Translate</button>
-            </div>
-        </div>
+        </form>
         <h2 style="margin-top: 20px;" id="translation"></h2>
     </div>
 </div>
 <script>
-    $("#button").click(function () {
+
+    document.getElementById("translationboomer").addEventListener("submit", function (event) {
+        event.preventDefault();
         var input = $("#text").val();
         const encodedMessage = encodeURIComponent(input);
         var settings = {
@@ -54,23 +57,10 @@
         }
 
         $.ajax(settings).done(response => {
-            //response.json()
-            console.log(response);
             return response;
         }).then(data => {
-            console.log(data);
-            console.log("***************************" + data.contents.translated + "***********************");
             var translation = data.contents.translated;
             $("#translation").text(translation);
-
-
-            // const li = document.createElement("li");
-            // const encodedMsg = user + ":  " + data.contents.translated;
-            // li.textContent = encodedMsg;
-            // document.getElementById("messagesList").appendChild(li);
-            // connection.invoke('SaveMessage', data.contents.translated, userid).catch(err => console.log("Something went oh horribly so wrong....", err))
-
         });
-
-    })
+    });
 </script>
