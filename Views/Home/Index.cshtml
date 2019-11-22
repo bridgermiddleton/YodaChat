@@ -3,20 +3,31 @@
 ViewData["Title"] = "Home Page";
 }
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <img src="~/images/yoda.jpg" width="70" height="70" class="d-inline-block" alt="">
+    <a class="navbar-brand" href="/home">
+        <img src="~/images/yoda.jpg" width="120" height="80" class="d-inline-block" alt="">
         YodaChat
     </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/home">Chat Room<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/translator">Translator</a>
+            <form asp-action="Logout" asp-controller="Home" method="POST">
+                <button class="btn btn-dark" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
 </nav>
 <div class="container">
-    <div class="row">&nbsp;</div>
+
+
     <div class="row">
-        <div class="col-6">&nbsp;</div>
-        <div class="col-6 form-group">
-            <input type="hidden" id="userInput" value="@Model.FirstName" />
-            <br />
-            @Model.FirstName:<input type="text" id="messageInput" />
-            <input type="button" id="sendButton" value="Send Message" />
+        <div>&nbsp;</div>
+        <div id="messagesDiv" class="row" style="max-height: 50vh; width: 100%;">
+            <ul id="messagesList"></ul>
         </div>
     </div>
     <div class="row">
@@ -24,12 +35,32 @@ ViewData["Title"] = "Home Page";
             <hr />
         </div>
     </div>
-    <div class="row">
-        <div class="col-6">&nbsp;</div>
-        <div class="col-6">
-            <ul id="messagesList"></ul>
+    <div class="row">&nbsp;</div>
+
+    <div>&nbsp;</div>
+    <div class="row form-group">
+        <input class="form-control" type="hidden" id="userInput" value="@Model.FirstName @Model.LastName" />
+        <input type="hidden" id="userid" value="@Model.UserId">
+        <div class="col-10">
+            <input class="form-control" style="margin-left: 15px;" type="text" id="messageInput"
+                placeholder="Type a message here" />
         </div>
+        <div class="col-2">
+            <button style="margin-left: 10px;" class="btn btn-primary" type="button" id="sendButton"
+                value="Send Message">Send Message</button>
+        </div>
+
+
     </div>
+
 </div>
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
+<script>
+    $("#sendButton").click(function () {
+        console.log("I am working!")
+        $('#messagesDiv').animate({
+            scrollTop: $('#messagesDiv')[0].scrollHeight
+        }, "slow");
+    })
+</script>

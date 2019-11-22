@@ -79,7 +79,7 @@ namespace Demo.Controllers
         [HttpPost]
         public IActionResult Logout()
         {
-            User user = dbContext.Users.Where(a => a.UserId == (int)HttpContext.Session.GetInt32("user_id")).Include(b => b.CreatedMessages).FirstOrDefault();
+            User user = dbContext.Users.Where(a => a.UserId == (int)HttpContext.Session.GetInt32("user_id")).Include(m => m.CreatedMessages).FirstOrDefault();
             foreach (Message message in user.CreatedMessages.ToList())
             {
                 dbContext.Remove(message);
@@ -98,8 +98,39 @@ namespace Demo.Controllers
             {
                 User user = dbContext.Users.Where(a => a.UserId == (int)HttpContext.Session.GetInt32("user_id")).FirstOrDefault();
                 return View(user);
+
             }
             return View("RegisterPage");
+
+        }
+        [HttpGet("translator")]
+        public IActionResult TranslatorPage()
+        {
+            if (HttpContext.Session.GetInt32("user_id") != null)
+            {
+                return View();
+            }
+            return View("RegisterPage");
+
+        }
+        [HttpPost]
+        public IActionResult YodaSpeak(YodaMessage yodaMessage)
+        {
+
+            YodaMessage newMessage = yodaMessage;
+            string message = yodaMessage.Content;
+            string url = QueryHelpers.AddQueryString("https://yodish.p.rapidapi.com/yoda.json", "text", message);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("x-rapidapi-host", "yodish.p.rapidapi.com");
+            request.AddHeader("x-rapidapi-key", "e9077e6ee9mshe29568a25c117e8p111788jsn2ad418d390bc");
+            request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            IRestResponse<YodaResponse> response = client.Execute<YodaResponse>(request);
+            HttpContext.Session.SetString("yoda_translation", response.Data.contents.translated);
+
+            return RedirectToAction("TranslatorPage");
+
+
 
         }
 

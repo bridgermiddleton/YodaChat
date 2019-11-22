@@ -1,11 +1,20 @@
 "use strict";
 
-var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-
+const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+connection.on("Welcome", (data) => {
+    console.log(data);
+    const list = document.getElementById("messagesList");
+    data.forEach(thing => {
+        const li = document.createElement("li");
+        li.textContent = thing.user + ":  " + thing.message;
+        list.appendChild(li);
+    })
+    list.scrollTop = list.scrollHeight;
+});
 //Disable send button until connection is established
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (user, message) {
+connection.on("ReceiveMessage", function (user, message, userid) {
     console.log(message);
     const encodedMessage = encodeURIComponent(message);
     fetch(`https://yodish.p.rapidapi.com/yoda.json?text=${encodedMessage}`, {
@@ -18,13 +27,14 @@ connection.on("ReceiveMessage", function (user, message) {
         "body": {}
     }).then(response => response.json()).then(data => {
         console.log(data.contents.translated);
-        var li = document.createElement("li");
-        var encodedMsg = user + " says " + data.contents.translated;
+        const li = document.createElement("li");
+        const encodedMsg = user + ":  " + data.contents.translated;
         li.textContent = encodedMsg;
         document.getElementById("messagesList").appendChild(li);
+        connection.invoke('SaveMessage', data.contents.translated, userid, user).catch(err => console.log("Something went oh horribly so wrong....", err))
 
     });
-    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 });
 
@@ -35,9 +45,10 @@ connection.start().then(function () {
 });
 
 document.getElementById("sendButton").addEventListener("click", function (event) {
-    var user = document.getElementById("userInput").value;
-    var message = document.getElementById("messageInput").value;
-    connection.invoke("SendMessage", user, message).catch(function (err) {
+    const user = document.getElementById("userInput").value;
+    const message = document.getElementById("messageInput").value;
+    const userid = document.getElementById("userid").value;
+    connection.invoke("SendMessage", user, message, userid).catch(function (err) {
         return console.error(err.toString());
     });
     event.preventDefault();

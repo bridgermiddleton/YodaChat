@@ -1,0 +1,16 @@
+ul {
+    list-style-type: none;
+}
+li {
+    background-color: rgb(0, 81, 233);
+    border-radius: 25px;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+
+}
+#messagesDiv {
+    top: 0px;
+    bottom: 0px;
+    overflow-y: auto;
+}

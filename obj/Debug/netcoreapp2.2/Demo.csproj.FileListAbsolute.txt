@@ -30,3 +30,4 @@
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Demo.csproj.CopyComplete
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/LoginPage.g.cshtml.cs
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/RegisterPage.g.cshtml.cs
+/Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/TranslatorPage.g.cshtml.cs
