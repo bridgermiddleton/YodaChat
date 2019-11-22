@@ -3006,6 +3006,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Home/HomePage.cshtml",
+      "TargetPath": "Views/Home/HomePage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
       "FileKind": "mvc"

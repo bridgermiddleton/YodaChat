@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/translator">
+    <a class="navbar-brand" href="/home">
         <img src="~/images/yoda.jpg" width="140" height="90" class="d-inline-block" alt="">
         YodaChat
     </a>
@@ -9,7 +9,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/translator">Translator<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="/home">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="/translator">Translator</a>
             <a class="nav-item nav-link active" href="/chatroom">Chat Room</a>
             <form asp-action="Logout" asp-controller="Home" method="POST">
                 <button class="btn btn-dark" type="submit">Logout</button>
@@ -61,6 +62,7 @@
             console.log("***************************" + data.contents.translated + "***********************");
             var translation = data.contents.translated;
             $("#translation").text(translation);
+
 
             // const li = document.createElement("li");
             // const encodedMsg = user + ":  " + data.contents.translated;

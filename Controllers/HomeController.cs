@@ -47,7 +47,7 @@ namespace Demo.Controllers
                 dbContext.Add(newUser);
                 dbContext.SaveChanges();
                 HttpContext.Session.SetInt32("user_id", newUser.UserId);
-                return RedirectToAction("TranslatorPage");
+                return RedirectToAction("HomePage");
             }
             return View("RegisterPage");
 
@@ -72,7 +72,7 @@ namespace Demo.Controllers
                     return View("LoginPage");
                 }
                 HttpContext.Session.SetInt32("user_id", userInDb.UserId);
-                return RedirectToAction("TranslatorPage");
+                return RedirectToAction("HomePage");
             }
             return View("LoginPage");
         }
@@ -107,27 +107,19 @@ namespace Demo.Controllers
             return View("RegisterPage");
 
         }
-        [HttpPost]
-        public IActionResult YodaSpeak(YodaMessage yodaMessage)
+
+
+        [HttpGet("home")]
+        public IActionResult HomePage()
         {
+            if (HttpContext.Session.GetInt32("user_id") != null)
+            {
+                User theuser = dbContext.Users.Where(u => u.UserId == (int)HttpContext.Session.GetInt32("user_id")).FirstOrDefault();
+                return View(theuser);
 
-            YodaMessage newMessage = yodaMessage;
-            string message = yodaMessage.Content;
-            string url = QueryHelpers.AddQueryString("https://yodish.p.rapidapi.com/yoda.json", "text", message);
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("x-rapidapi-host", "yodish.p.rapidapi.com");
-            request.AddHeader("x-rapidapi-key", "e9077e6ee9mshe29568a25c117e8p111788jsn2ad418d390bc");
-            request.AddHeader("content-type", "application/x-www-form-urlencoded");
-            IRestResponse<YodaResponse> response = client.Execute<YodaResponse>(request);
-            HttpContext.Session.SetString("yoda_translation", response.Data.contents.translated);
-
-            return RedirectToAction("TranslatorPage");
-
-
-
+            }
+            return View("RegisterPage");
         }
-
         public IActionResult Privacy()
         {
             return View();

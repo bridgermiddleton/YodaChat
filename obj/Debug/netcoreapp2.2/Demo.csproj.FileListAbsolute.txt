@@ -31,3 +31,4 @@
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/RegisterPage.g.cshtml.cs
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/TranslatorPage.g.cshtml.cs
 /Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/ChatRoomPage.g.cshtml.cs
+/Users/bridgermiddleton/Desktop/coding_dojo/C#/ProjectWeek/Demo/obj/Debug/netcoreapp2.2/Razor/Views/Home/HomePage.g.cshtml.cs

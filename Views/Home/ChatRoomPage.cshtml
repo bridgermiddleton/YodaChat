@@ -3,7 +3,7 @@
 ViewData["Title"] = "Home Page";
 }
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/translator">
+    <a class="navbar-brand" href="/home">
         <img src="~/images/yoda.jpg" width="140" height="90" class="d-inline-block" alt="">
         YodaChat
     </a>
@@ -13,7 +13,8 @@ ViewData["Title"] = "Home Page";
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/translator">Translator<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="/home">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="/translator">Translator</a>
             <a class="nav-item nav-link active" href="/chatroom">Chat Room</a>
             <form asp-action="Logout" asp-controller="Home" method="POST">
                 <button class="btn btn-dark" type="submit">Logout</button>
@@ -22,6 +23,8 @@ ViewData["Title"] = "Home Page";
     </div>
 </nav>
 <div class="container">
+    <h1 class="display-4 text-center">Yoda's Chat Room</h1>
+    <hr>
 
 
     <div class="row">
@@ -37,24 +40,27 @@ ViewData["Title"] = "Home Page";
     </div>
     <div class="row">&nbsp;</div>
 
-    <div>&nbsp;</div>
-    <div class="row form-group">
-        <input class="form-control" type="hidden" id="userInput" value="@Model.FirstName @Model.LastName" />
-        <input type="hidden" id="userid" value="@Model.UserId">
-        <div class="col-10">
-            <input class="form-control" style="margin-left: 15px;" type="text" id="messageInput"
-                placeholder="Type a message here" />
+    <form id="okboomer">
+        <div>&nbsp;</div>
+        <div class="row form-group">
+            <input class="form-control" type="hidden" id="userInput" value="@Model.FirstName @Model.LastName" />
+            <input type="hidden" id="userid" value="@Model.UserId">
+            <div class="col-10">
+                <input class="form-control" style="margin-left: 15px;" type="text" id="messageInput"
+                    placeholder="Type a message here" />
+            </div>
+            <div class="col-2">
+                <button style="margin-left: 10px;" class="btn btn-primary" type="submit" id="sendButton"
+                    value="Send Message">Send Message</button>
+            </div>
+
+
         </div>
-        <div class="col-2">
-            <button style="margin-left: 10px;" class="btn btn-primary" type="button" id="sendButton"
-                value="Send Message">Send Message</button>
-        </div>
-
-
-    </div>
-
+    </form>
 </div>
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
-<script></script>
+<script>
+
+</script>
 </script>

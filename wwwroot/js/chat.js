@@ -48,9 +48,11 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 
-document.getElementById("sendButton").addEventListener("click", function (event) {
+document.getElementById("okboomer").addEventListener("submit", function (event) {
     const user = document.getElementById("userInput").value;
-    const message = document.getElementById("messageInput").value;
+    const messageinput = document.getElementById("messageInput");
+    const message = messageinput.value;
+    messageinput.value = "";
     const userid = document.getElementById("userid").value;
     connection.invoke("SendMessage", user, message, userid).catch(function (err) {
         return console.error(err.toString());
