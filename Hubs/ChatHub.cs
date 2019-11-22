@@ -50,8 +50,6 @@ namespace SignalRChat.Hubs
 
             };
             ChatHistory3.Add(new { user = user, message = msg });
-            dbContext.Add(newMessage);
-            dbContext.SaveChanges();
         }
     }
 }

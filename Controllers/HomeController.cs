@@ -62,14 +62,14 @@ namespace Demo.Controllers
                 if (userInDb == null)
                 {
                     ModelState.AddModelError("Email", "Invalid Email/Password");
-                    return View("LoginAndRegPage");
+                    return View("LoginPage");
                 }
                 var hasher = new PasswordHasher<LoginCredentials>();
                 var result = hasher.VerifyHashedPassword(loggeduser, userInDb.Password, loggeduser.Password);
                 if (result == 0)
                 {
                     ModelState.AddModelError("Password", "Invalid Email/Password");
-                    return View("LoginAndRegPage");
+                    return View("LoginPage");
                 }
                 HttpContext.Session.SetInt32("user_id", userInDb.UserId);
                 return RedirectToAction("Index");

@@ -9,7 +9,7 @@ connection.on("Welcome", (data) => {
         li.textContent = thing.user + ":  " + thing.message;
         list.appendChild(li);
     })
-    list.scrollTop = list.scrollHeight;
+
 });
 //Disable send button until connection is established
 document.getElementById("sendButton").disabled = true;
@@ -31,6 +31,10 @@ connection.on("ReceiveMessage", function (user, message, userid) {
         const encodedMsg = user + ":  " + data.contents.translated;
         li.textContent = encodedMsg;
         document.getElementById("messagesList").appendChild(li);
+        const messagesContainer = document.getElementById("messagesDiv");
+        $('#messagesDiv').animate({
+            scrollTop: $('#messagesDiv')[0].scrollHeight
+        }, "slow");
         connection.invoke('SaveMessage', data.contents.translated, userid, user).catch(err => console.log("Something went oh horribly so wrong....", err))
 
     });
